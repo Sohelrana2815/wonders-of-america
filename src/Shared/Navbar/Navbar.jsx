@@ -35,25 +35,61 @@ const Navbar = () => {
   }
   const navLinks = (
     <>
-      <div className="lg:flex lg:text-white">
+      <div className="lg:flex">
         <li>
-          <NavLink to="/">Home</NavLink>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive
+                ? "border-2 border-info md:text-base text-white"
+                : "text-warning md:text-base"
+            }
+          >
+            Home
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/allTouristSpot">All Tourist Spot</NavLink>
+          <NavLink
+            to="/addTouristSpot"
+            className={({ isActive }) =>
+              isActive
+                ? "border-2 border-info md:text-base"
+                : "text-warning md:text-base"
+            }
+          >
+            Add Tourist Spot
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/addTouristSpot">Add Tourist Spot</NavLink>
+          <NavLink
+            to="/allTouristSpot"
+            className={({ isActive }) =>
+              isActive
+                ? "border-2 border-info md:text-base"
+                : "text-warning md:text-base"
+            }
+          >
+            All Tourist Spot
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/myList">My List</NavLink>
+          <NavLink
+            to="/myList"
+            className={({ isActive }) =>
+              isActive
+                ? "border text-white md:text-base"
+                : "text-warning md:text-base"
+            }
+          >
+            My List
+          </NavLink>
         </li>
       </div>
     </>
   );
   return (
     <>
-      <div className="navbar absolute z-10 top-0 left-1/2 transform -translate-x-1/2 e max-w-screen-xl md:pt-10 bg-black bg-opacity-15 lg:fixed">
+      <div className="navbar absolute z-10 top-0 left-1/2 transform -translate-x-1/2 e max-w-screen-xl md:pt-10 lg:fixed">
         <div className="navbar-start">
           <div className="dropdown">
             <div

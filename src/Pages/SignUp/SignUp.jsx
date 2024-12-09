@@ -30,10 +30,6 @@ const SignUp = () => {
 
   return (
     <>
-      {/* 
-    DB_USER: wonders-of-america
-    DB_PASS: tnaZoIv35RxwC12k
-    */}
       <div
         className="hero min-h-screen"
         style={{
