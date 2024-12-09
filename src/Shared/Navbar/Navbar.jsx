@@ -1,8 +1,38 @@
 import { BiGlobe } from "react-icons/bi";
 import { MdMenu } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const { user, loading, logout } = useAuth();
+  // Logout function
+  const handleLogout = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Logout!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        logout();
+        Swal.fire({
+          title: "Logout successfully!",
+          icon: "success",
+        });
+      }
+    });
+  };
+
+  if (loading) {
+    return (
+      <div className="flex justify-center bg-black">
+        <span className="loading loading-dots loading-lg text-[#1563DF]"></span>
+      </div>
+    );
+  }
   const navLinks = (
     <>
       <div className="lg:flex lg:text-white">
@@ -50,16 +80,27 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
         <div className="navbar-end gap-4">
-          <Link to="/signIn">
-            <button className="btn rounded-none bg-[#F56960] text-white border-none px-8">
-              Login
+          {user ? (
+            <button
+              onClick={handleLogout}
+              className="btn btn-outline rounded-none hover:bg-[#F56960] text-white px-8 text-lg"
+            >
+              Logout
             </button>
-          </Link>
-          <Link to="/signUp">
-            <button className="btn btn-outline rounded-none hover:bg-[#0791BE] text-white px-8">
-              Sign up
-            </button>
-          </Link>
+          ) : (
+            <>
+              <Link to="/signIn">
+                <button className="btn rounded-none bg-[#F56960] text-white border-none px-8">
+                  Login
+                </button>
+              </Link>
+              <Link to="/signUp">
+                <button className="btn btn-outline rounded-none hover:bg-[#0791BE] text-white px-8">
+                  Sign up
+                </button>
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </>

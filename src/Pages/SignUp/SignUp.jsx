@@ -1,12 +1,25 @@
 import signUpImg from "../../assets/SignUpImg/signUpImg.jpg";
 import logo from "../../assets/LoginImg/logo.png";
 import { useForm } from "react-hook-form";
+import useAuth from "../../Hooks/useAuth";
+import toast, { Toaster } from "react-hot-toast";
 const SignUp = () => {
+  const { createNewUser, updateUserProfile } = useAuth();
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
-    reset();
+    const { name, photoURL, email, password } = data;
+    createNewUser(email, password).then((result) => {
+      console.log(result.user);
+
+      updateUserProfile(name, photoURL).then(() => {
+        console.log("Update successfully");
+        if ((name, photoURL)) {
+          reset();
+          toast.success("Successfully Created A New User");
+        }
+      });
+    });
   };
 
   return (
@@ -102,6 +115,7 @@ const SignUp = () => {
           </div>
         </form>
       </div>
+      <Toaster />
     </>
   );
 };
