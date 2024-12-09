@@ -3,6 +3,7 @@ import logo from "../../assets/LoginImg/logo.png";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
 import toast, { Toaster } from "react-hot-toast";
+import { Link } from "react-router-dom";
 const SignUp = () => {
   const { createNewUser, updateUserProfile } = useAuth();
   const { register, handleSubmit, reset } = useForm();
@@ -112,6 +113,12 @@ const SignUp = () => {
             >
               Sign up
             </button>
+            <p className="text-center">
+              Already have an account?{" "}
+              <Link to="/signIn" className="underline text-blue-600 text-lg">
+                Login
+              </Link>
+            </p>
           </div>
         </form>
       </div>
