@@ -6,7 +6,12 @@ import toast, { Toaster } from "react-hot-toast";
 import { Link } from "react-router-dom";
 const SignUp = () => {
   const { createNewUser, updateUserProfile } = useAuth();
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = (data) => {
     const { name, photoURL, email, password } = data;
@@ -25,6 +30,10 @@ const SignUp = () => {
 
   return (
     <>
+      {/* 
+    DB_USER: wonders-of-america
+    DB_PASS: tnaZoIv35RxwC12k
+    */}
       <div
         className="hero min-h-screen"
         style={{
@@ -97,11 +106,21 @@ const SignUp = () => {
               <input
                 type="password"
                 name="password"
-                {...register("password")}
+                {...register("password", {
+                  required: "Password is required",
+                  pattern: {
+                    value: /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/,
+                    message:
+                      "Password must have an uppercase latter, a lowercase latter, and be at least 6 characters long",
+                  },
+                })}
                 placeholder="Your Password"
                 className="input input-bordered rounded-none"
                 required
               />
+              {errors.password && (
+                <p className="text-red-500">{errors.password.message}</p>
+              )}
             </div>
           </div>
 
