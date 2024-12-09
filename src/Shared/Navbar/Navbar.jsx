@@ -81,12 +81,21 @@ const Navbar = () => {
         </div>
         <div className="navbar-end gap-4">
           {user ? (
-            <button
-              onClick={handleLogout}
-              className="btn btn-outline rounded-none hover:bg-[#F56960] text-white px-8 text-lg"
-            >
-              Logout
-            </button>
+            <>
+              {/* avatar */}
+              <div className="avatar" title={user.displayName}>
+                <div className="ring-primary ring-offset-base-100 w-10 rounded-full ring ring-offset-2">
+                  <img src={user ? user.photoURL : ""} alt={user.displayName} />
+                </div>
+              </div>
+              {/* button */}
+              <button
+                onClick={handleLogout}
+                className="btn btn-outline rounded-none hover:bg-[#F56960] text-white px-8 text-lg"
+              >
+                Logout
+              </button>
+            </>
           ) : (
             <>
               <Link to="/signIn">
