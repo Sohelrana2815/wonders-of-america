@@ -1,6 +1,14 @@
 import signUpImg from "../../assets/SignUpImg/signUpImg.jpg";
 import logo from "../../assets/LoginImg/logo.png";
+import { useForm } from "react-hook-form";
 const SignUp = () => {
+  const { register, handleSubmit, reset } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+    reset();
+  };
+
   return (
     <>
       <div
@@ -13,7 +21,10 @@ const SignUp = () => {
         }}
       >
         <div className="hero-overlay bg-opacity-60 bg-black"></div>{" "}
-        <form className="card-body bg-base-100 lg:w-3/4 xl:w-1/2 ">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="card-body bg-base-100 lg:w-3/4 xl:w-1/2 "
+        >
           <label className="label flex justify-center">
             <span className="label-text text-2xl font-medium">
               <img src={logo} alt="" />
@@ -27,9 +38,10 @@ const SignUp = () => {
                 <span className="label-text">Name</span>
               </label>
               <input
-                type="email"
+                type="text"
+                name="name"
+                {...register("name")}
                 placeholder="Full Name"
-                name="email"
                 className="input input-bordered rounded-none"
                 required
               />
@@ -42,8 +54,9 @@ const SignUp = () => {
 
               <input
                 type="email"
-                placeholder="Email"
                 name="email"
+                {...register("email")}
+                placeholder="Email"
                 className="input input-bordered rounded-none"
                 required
               />
@@ -54,9 +67,10 @@ const SignUp = () => {
                 <span className="label-text">PhotoURL</span>
               </label>
               <input
-                type="password"
+                type="text"
+                name="photoURL"
+                {...register("photoURL")}
                 placeholder="PhotoURL"
-                name="password"
                 className="input input-bordered rounded-none"
                 required
               />
@@ -68,8 +82,9 @@ const SignUp = () => {
               </label>
               <input
                 type="password"
-                placeholder="Your Password"
                 name="password"
+                {...register("password")}
+                placeholder="Your Password"
                 className="input input-bordered rounded-none"
                 required
               />

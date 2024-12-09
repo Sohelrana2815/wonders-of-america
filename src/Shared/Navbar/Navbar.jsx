@@ -41,9 +41,9 @@ const Navbar = () => {
             </ul>
           </div>
           <Link to="/">
-            <a className="md:text-2xl flex items-center gap-3 text-white">
+            <p className="md:text-2xl flex items-center gap-3 text-white">
               <BiGlobe className="md:text-4xl" /> Wonders Of America
-            </a>
+            </p>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
