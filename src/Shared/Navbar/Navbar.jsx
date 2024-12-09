@@ -41,7 +41,7 @@ const Navbar = () => {
             to="/"
             className={({ isActive }) =>
               isActive
-                ? "border-2 border-info md:text-base text-white"
+                ? "border-2 border-info md:text-base text-warning"
                 : "text-warning md:text-base"
             }
           >
@@ -89,7 +89,7 @@ const Navbar = () => {
   );
   return (
     <>
-      <div className="navbar absolute z-10 top-0 left-1/2 transform -translate-x-1/2 e max-w-screen-xl md:pt-10 lg:fixed">
+      <div className="navbar absolute z-10 top-0 left-1/2 transform -translate-x-1/2 e max-w-screen-xl md:pt-10 lg:fixed bgwhi">
         <div className="navbar-start">
           <div className="dropdown">
             <div
