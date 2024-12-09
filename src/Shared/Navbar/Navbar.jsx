@@ -23,7 +23,7 @@ const Navbar = () => {
   );
   return (
     <>
-      <div className="navbar absolute z-10 top-0 left-1/2 transform -translate-x-1/2 e max-w-screen-xl md:pt-10">
+      <div className="navbar absolute z-10 top-0 left-1/2 transform -translate-x-1/2 e max-w-screen-xl md:pt-10 bg-black bg-opacity-15 lg:fixed">
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -50,7 +50,11 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          <Link to="/signIn">
+            <button className="btn rounded-none bg-[#F56960] text-white border-none px-8">
+              Login
+            </button>
+          </Link>
         </div>
       </div>
     </>
