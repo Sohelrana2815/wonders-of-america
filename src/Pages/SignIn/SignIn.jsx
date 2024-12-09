@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import loginImg from "../../assets/LoginImg/loginImg.jpg";
 import logo from "../../assets/LoginImg/logo.png";
 
@@ -54,6 +55,15 @@ const SignIn = () => {
                 >
                   Login
                 </button>
+                <p className="text-center">
+                  Don&apos;t have an account?{" "}
+                  <Link
+                    to="/signUp"
+                    className="underline text-blue-600 text-lg"
+                  >
+                    Register
+                  </Link>
+                </p>
               </div>
             </form>
           </div>

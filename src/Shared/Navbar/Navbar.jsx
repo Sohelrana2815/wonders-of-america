@@ -49,10 +49,15 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end gap-4">
           <Link to="/signIn">
             <button className="btn rounded-none bg-[#F56960] text-white border-none px-8">
               Login
+            </button>
+          </Link>
+          <Link to="/signUp">
+            <button className="btn btn-outline rounded-none hover:bg-[#0791BE] text-white px-8">
+              Sign up
             </button>
           </Link>
         </div>
