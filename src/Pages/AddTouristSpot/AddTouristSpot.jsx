@@ -1,18 +1,54 @@
 import logo from "../../assets/LoginImg/logo.png";
 import { useForm } from "react-hook-form";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
+import useAuth from "../../Hooks/useAuth";
 const AddTouristSpot = () => {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const { user } = useAuth();
+  const axiosPublic = useAxiosPublic();
+  const { register, handleSubmit, reset } = useForm();
+  const onSubmit = async (data) => {
+    try {
+      const touristSpotData = {
+        email: user?.email,
+        name: user?.displayName,
+        image: data.photoURL,
+        spotName: data.spotName,
+        countryName: data.countryName,
+        location: data.location,
+        description: data.description,
+        averageCost: parseFloat(data.avgCost),
+        seasonality: data.seasonality,
+        travelTime: data.travelTime,
+        totalVisitorsPerYear: parseInt(data.visitors, 10),
+      };
+      // Post the data
+
+      const response = await axiosPublic.post(
+        "/addTouristSpot",
+        touristSpotData
+      );
+      console.log("Response: ", response.data);
+      if (response.data.insertedId) {
+        reset();
+        Swal.fire({
+          title: "Tourist Spot Added successfully.",
+          icon: "success",
+        });
+      }
+      // Optional: Add success message or redirect
+    } catch (error) {
+      console.error("Error posting data:", error);
+    }
+  };
   return (
     <>
       <div className="bg-[#0791BED9] min-h-screen flex justify-center items-center">
         <div className="mt-32 bg-base-200 md:w-1/2 mx-auto rounded">
-          <form onSubmit={handleSubmit(onSubmit)} className="card-body shadow-lg">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="card-body shadow-lg"
+          >
             <label className="label flex justify-center">
               <img src={logo} alt="" />
             </label>
@@ -108,7 +144,7 @@ const AddTouristSpot = () => {
                 </label>
                 <input
                   type="text"
-                  placeholder="Average cost"
+                  placeholder="Seasonality"
                   name="seasonality"
                   {...register("seasonality")}
                   className="input input-bordered"
@@ -124,7 +160,7 @@ const AddTouristSpot = () => {
                   type="text"
                   placeholder="Travel time"
                   name="time"
-                  {...register("seasonality")}
+                  {...register("travelTime")}
                   className="input input-bordered"
                   required
                 />
@@ -135,8 +171,7 @@ const AddTouristSpot = () => {
                   <span className="label-text">Total Visitors Per Year</span>
                 </label>
                 <input
-                  type="number
-                "
+                  type="number"
                   placeholder="Total Visitors Per Year"
                   name="visitors"
                   {...register("visitors")}
@@ -146,7 +181,10 @@ const AddTouristSpot = () => {
               </div>
             </div>
             <div className="form-control mt-6">
-              <button className="btn bg-[#1563DF] text-white text-base">
+              <button
+                type="submit"
+                className="btn bg-[#1563DF] text-white text-base"
+              >
                 ADD THIS TOURISTS SPOT
               </button>
             </div>

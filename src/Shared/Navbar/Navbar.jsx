@@ -41,8 +41,8 @@ const Navbar = () => {
             to="/"
             className={({ isActive }) =>
               isActive
-                ? "border-2 border-info md:text-base text-warning"
-                : "text-warning md:text-base"
+                ? "border-2 border-info md:text-base lg:text-warning"
+                : "lg:text-warning md:text-base"
             }
           >
             Home
@@ -53,8 +53,8 @@ const Navbar = () => {
             to="/addTouristSpot"
             className={({ isActive }) =>
               isActive
-                ? "border-2 border-info md:text-base"
-                : "text-warning md:text-base"
+                ? "border-2 border-info md:text-base lg:text-warning"
+                : "lg:text-warning md:text-base"
             }
           >
             Add Tourist Spot
@@ -65,8 +65,8 @@ const Navbar = () => {
             to="/allTouristSpot"
             className={({ isActive }) =>
               isActive
-                ? "border-2 border-info md:text-base"
-                : "text-warning md:text-base"
+                ? "border-2 border-info md:text-base lg:text-warning"
+                : "lg:text-warning md:text-base"
             }
           >
             All Tourist Spot
@@ -74,11 +74,11 @@ const Navbar = () => {
         </li>
         <li>
           <NavLink
-            to="/myList"
+            to="/myLists"
             className={({ isActive }) =>
               isActive
-                ? "border text-white md:text-base"
-                : "text-warning md:text-base"
+                ? "border-2 border-info md:text-base lg:text-warning"
+                : "lg:text-warning md:text-base"
             }
           >
             My List
@@ -95,7 +95,7 @@ const Navbar = () => {
             <div
               tabIndex={0}
               role="button"
-              className="text-3xl text-white block lg:hidden mr-4"
+              className="text-3xl text-warning  block lg:hidden mr-4"
             >
               <MdMenu />
             </div>

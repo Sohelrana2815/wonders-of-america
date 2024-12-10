@@ -7,6 +7,8 @@ import AddTouristSpot from "../Pages/AddTouristSpot/AddTouristSpot";
 import PrivateRoute from "./PrivateRoute";
 import AllTouristSpots from "../Pages/AllTouristSpots/AllTouristSpots";
 import TouristSpotDetails from "../Pages/TouristSpotDetails/TouristSpotDetails";
+import AddedSpotDetails from "../Pages/AddedSpotDetails/AddedSpotDetails";
+import MyListsTable from "../Pages/MyListsTable/MyListsTable";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +48,20 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/touristSpots/${params.id}`),
+      },
+      {
+        path: "addedSpotDetails/:id",
+        element: (
+          <PrivateRoute>
+            <AddedSpotDetails />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/userAddedTouristSpots/${params.id}`),
+      },
+      {
+        path: "myLists",
+        element: <MyListsTable />,
       },
     ],
   },

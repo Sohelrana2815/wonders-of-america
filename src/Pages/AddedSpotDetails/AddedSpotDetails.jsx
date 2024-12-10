@@ -1,48 +1,49 @@
-import { useLoaderData } from "react-router-dom";
-import travel from "../../assets/touristSpotDetailImg/travel.jpg";
 import { BsGlobe, BsPeople } from "react-icons/bs";
-import { TiWeatherSunny } from "react-icons/ti";
 import { CiLocationOn } from "react-icons/ci";
 import { FiClock } from "react-icons/fi";
 import { GrCurrency } from "react-icons/gr";
-const TouristSpotDetails = () => {
-  const touristSpots = useLoaderData();
+import { TiWeatherWindy } from "react-icons/ti";
+import { useLoaderData } from "react-router-dom";
+import detailImg from "../../assets/touristSpotDetailImg/travel.jpg";
+const AddedSpotDetails = () => {
+  const userAddedTouristSpots = useLoaderData();
+
   const {
     image,
-    tourist_spot_name,
-    country_name,
+    spotName,
+    countryName,
     location,
-    short_description,
-    average_cost,
+    description,
+    averageCost,
     seasonality,
-    travel_time,
+    travelTime,
     totalVisitorsPerYear,
-  } = touristSpots;
-  console.log(touristSpots);
+  } = userAddedTouristSpots;
 
   return (
     <>
       <div className="my-32 relative">
-        <img src={travel} className="w-full h-[500px] object-cover" alt="" />
+        <img src={detailImg} className="w-full h-[500px] object-cover" alt="" />
         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <p className="text-white text-7xl font-bold">Package Detail</p>
+          <p className="text-white text-6xl font-bold">
+            Your Tourists Spot Detail
+          </p>
         </div>
       </div>
-
       <div className="max-w-screen-2xl mx-auto md:mt-20 flex">
         {/* 1st div */}
         <div className="w-3/5 space-y-3">
-          <h2 className="text-5xl font-bold pb-2">{tourist_spot_name}</h2>
+          <h2 className="text-5xl font-bold pb-2">{spotName}</h2>
           <div className="relative">
             <img src={image} className="w-full" alt="" />
             <div className="flex items-center justify-evenly py-5 text-white bg-[#0791BE]">
               <p className="flex items-center  text-lg">
-                <TiWeatherSunny />
+                <TiWeatherWindy />
                 {seasonality}
               </p>
               <p className="flex items-center text-lg gap-x-2">
                 <FiClock />
-                {travel_time}
+                {travelTime}
               </p>
               <p className="flex items-center text-lg">
                 <CiLocationOn />
@@ -52,11 +53,11 @@ const TouristSpotDetails = () => {
           </div>
           <div className="pb-8">
             <p className="text-2xl font-medium">Description:</p>
-            <p className="text-lg font-medium">{short_description}</p>
+            <p className="text-lg font-medium">{description}</p>
             <div className="divider"></div>
             <p className="text-2xl gap-x-2">Country:</p>
             <p className="font-medium text-lg flex items-center gap-x-2">
-              <BsGlobe /> {country_name}
+              <BsGlobe /> {countryName}
             </p>
           </div>
         </div>
@@ -67,7 +68,7 @@ const TouristSpotDetails = () => {
             {totalVisitorsPerYear} visitors/ per year
           </p>
           <p className="bg-[#0791BE] h-20 text-center flex items-center justify-center text-white font-medium gap-x-3">
-            <GrCurrency className="text-lg" /> ${average_cost} / per person
+            <GrCurrency className="text-lg" /> ${averageCost} / per person
           </p>
 
           {/* Hero form */}
@@ -121,4 +122,4 @@ const TouristSpotDetails = () => {
   );
 };
 
-export default TouristSpotDetails;
+export default AddedSpotDetails;
