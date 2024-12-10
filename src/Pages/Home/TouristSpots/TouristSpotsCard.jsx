@@ -1,6 +1,7 @@
 import { BiRightArrow } from "react-icons/bi";
 import { BsClock, BsGlobe } from "react-icons/bs";
 import { FaLocationArrow } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const TouristSpotsCard = ({ touristSpot }) => {
   const {
@@ -44,13 +45,15 @@ const TouristSpotsCard = ({ touristSpot }) => {
         </div>
 
         {/* Text content */}
-        <div className="absolute space-y-4 bottom-0">
-          <h2 className="md:text-2xl font-medium">{tourist_spot_name}</h2>
-          <p className="text-base">{short_description}</p>
-          <button className="btn w-full">
-            View Details
-            <BiRightArrow />
-          </button>
+        <div className="absolute bottom-6">
+          <h2 className="md:text-2xl font-medium px-2">{tourist_spot_name}</h2>
+          <p className="text-base px-2">{short_description}</p>
+          <Link to={`/touristSpotDetails/${_id}`}>
+            <button className="btn w-full  bg-[#101F46] text-white mt-2">
+              View Details
+              <BiRightArrow />
+            </button>
+          </Link>
         </div>
       </div>
     </>

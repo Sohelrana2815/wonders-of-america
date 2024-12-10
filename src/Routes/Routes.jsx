@@ -6,6 +6,7 @@ import SignUp from "../Pages/SignUp/SignUp";
 import AddTouristSpot from "../Pages/AddTouristSpot/AddTouristSpot";
 import PrivateRoute from "./PrivateRoute";
 import AllTouristSpots from "../Pages/AllTouristSpots/AllTouristSpots";
+import TouristSpotDetails from "../Pages/TouristSpotDetails/TouristSpotDetails";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,16 @@ const router = createBrowserRouter([
       {
         path: "allTouristSpot",
         element: <AllTouristSpots />,
+      },
+      {
+        path: "touristSpotDetails/:id",
+        element: (
+          <PrivateRoute>
+            <TouristSpotDetails />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/touristSpots/${params.id}`),
       },
     ],
   },

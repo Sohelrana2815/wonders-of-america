@@ -15,7 +15,6 @@ const TouristSpots = () => {
   }, [axiosPublic]);
   return (
     <div>
-      <h2 className="text-center text-3xl">{touristSpots.length}</h2>
       <SectionTitle
         subHeading="EXPLORE GREAT PLACES"
         heading="POPULAR PACKAGES"

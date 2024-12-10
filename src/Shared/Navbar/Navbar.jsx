@@ -107,8 +107,8 @@ const Navbar = () => {
             </ul>
           </div>
           <Link to="/">
-            <p className="md:text-2xl flex items-center gap-3 text-white">
-              <BiGlobe className="md:text-4xl" /> Wonders Of America
+            <p className="md:text-2xl flex items-center gap-3 text-warning">
+              <BiGlobe className="md:text-4xl " /> Wonders Of America
             </p>
           </Link>
         </div>
@@ -127,7 +127,7 @@ const Navbar = () => {
               {/* button */}
               <button
                 onClick={handleLogout}
-                className="btn btn-outline rounded-none hover:bg-[#F56960] text-white px-8 text-lg"
+                className="btn btn-outline rounded-none hover:bg-[#F56960] text-warning px-8 text-lg"
               >
                 Logout
               </button>
