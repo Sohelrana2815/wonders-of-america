@@ -61,7 +61,11 @@ const router = createBrowserRouter([
       },
       {
         path: "myLists",
-        element: <MyListsTable />,
+        element: (
+          <PrivateRoute>
+            <MyListsTable />
+          </PrivateRoute>
+        ),
       },
     ],
   },
