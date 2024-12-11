@@ -63,7 +63,6 @@ const SignIn = () => {
                 </label>
                 <input
                   type="email"
-                  name="email"
                   {...register("email")}
                   placeholder="Email"
                   className="input input-bordered rounded-none"
@@ -76,7 +75,6 @@ const SignIn = () => {
                 </label>
                 <input
                   type="password"
-                  name="password"
                   {...register("password")}
                   placeholder="Password"
                   className="input input-bordered rounded-none"

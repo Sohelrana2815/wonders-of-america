@@ -58,7 +58,6 @@ const SignUp = () => {
               </label>
               <input
                 type="text"
-                name="name"
                 {...register("name")}
                 placeholder="Full Name"
                 className="input input-bordered rounded-none"
@@ -73,7 +72,6 @@ const SignUp = () => {
 
               <input
                 type="email"
-                name="email"
                 {...register("email")}
                 placeholder="Email"
                 className="input input-bordered rounded-none"
@@ -87,7 +85,6 @@ const SignUp = () => {
               </label>
               <input
                 type="text"
-                name="photoURL"
                 {...register("photoURL")}
                 placeholder="PhotoURL"
                 className="input input-bordered rounded-none"
@@ -101,7 +98,6 @@ const SignUp = () => {
               </label>
               <input
                 type="password"
-                name="password"
                 {...register("password", {
                   required: "Password is required",
                   pattern: {

@@ -61,7 +61,6 @@ const AddTouristSpot = () => {
                 <input
                   type="text"
                   placeholder="PhotoURL"
-                  name="photoURL"
                   {...register("photoURL")}
                   className="input input-bordered"
                   required
@@ -75,7 +74,6 @@ const AddTouristSpot = () => {
                 <input
                   type="text"
                   placeholder="Tourist Spot Name"
-                  name="spotName"
                   {...register("spotName")}
                   className="input input-bordered"
                   required
@@ -89,7 +87,6 @@ const AddTouristSpot = () => {
                 <input
                   type="text"
                   placeholder="Country Name"
-                  name="countryName"
                   {...register("countryName")}
                   className="input input-bordered"
                   required
@@ -103,7 +100,6 @@ const AddTouristSpot = () => {
                 <input
                   type="text"
                   placeholder="Location"
-                  name="location"
                   {...register("location")}
                   className="input input-bordered"
                   required
@@ -117,7 +113,6 @@ const AddTouristSpot = () => {
                 <input
                   type="text"
                   placeholder="Description"
-                  name="description"
                   {...register("description")}
                   className="input input-bordered"
                   required
@@ -145,7 +140,6 @@ const AddTouristSpot = () => {
                 <input
                   type="text"
                   placeholder="Seasonality"
-                  name="seasonality"
                   {...register("seasonality")}
                   className="input input-bordered"
                   required
@@ -159,7 +153,6 @@ const AddTouristSpot = () => {
                 <input
                   type="text"
                   placeholder="Travel time"
-                  name="time"
                   {...register("travelTime")}
                   className="input input-bordered"
                   required
@@ -173,7 +166,6 @@ const AddTouristSpot = () => {
                 <input
                   type="number"
                   placeholder="Total Visitors Per Year"
-                  name="visitors"
                   {...register("visitors")}
                   className="input input-bordered"
                   required
