@@ -13,8 +13,12 @@ const AllTouristSpotCard = ({ touristSpot }) => {
     averageCost,
     _id,
   } = touristSpot;
+  if (!touristSpot) {
+    return <p>No Added Tourist Spot Yet.</p>;
+  }
   return (
     <>
+      <div className="divider"></div>
       <div className="h-full md:w-96 shadow-xl">
         <figure className="lg:h-[25vh]">
           <img src={image} alt="Shoes" className="h-full w-full object-cover" />

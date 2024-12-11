@@ -99,6 +99,7 @@ const MyListsTable = () => {
   return (
     <>
       <Toaster />
+
       <div className="mt-32 max-w-screen-2xl mx-auto">
         {/* Table */}
         <div className="overflow-x-auto">

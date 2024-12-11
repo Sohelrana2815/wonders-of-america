@@ -95,7 +95,7 @@ const Navbar = () => {
             <div
               tabIndex={0}
               role="button"
-              className="text-3xl text-warning  block lg:hidden mr-4"
+              className="md:text-3xl text-2xl text-warning  block lg:hidden mr-4"
             >
               <MdMenu />
             </div>
@@ -107,8 +107,8 @@ const Navbar = () => {
             </ul>
           </div>
           <Link to="/">
-            <p className="md:text-2xl flex items-center gap-3 text-warning">
-              <BiGlobe className="md:text-4xl " /> Wonders Of America
+            <p className="md:text-2xl flex items-center md:gap-x-3 gap-x-1 text-xs text-warning">
+              <BiGlobe className="md:text-4xl text-xl" /> Wonders Of America
             </p>
           </Link>
         </div>
@@ -120,14 +120,14 @@ const Navbar = () => {
             <>
               {/* avatar */}
               <div className="avatar" title={user.displayName}>
-                <div className="ring-primary ring-offset-base-100 w-10 rounded-full ring ring-offset-2">
+                <div className="ring-primary ring-offset-base-100 w-8 md:w-10 rounded-full ring ring-offset-2">
                   <img src={user ? user.photoURL : ""} alt={user.displayName} />
                 </div>
               </div>
               {/* button */}
               <button
                 onClick={handleLogout}
-                className="btn btn-outline rounded-none hover:bg-[#F56960] text-warning px-8 text-lg"
+                className="btn btn-outline rounded-none hover:bg-[#F56960] text-warning md:px-8 md:text-lg btn-xs md:btn-md text-sm"
               >
                 Logout
               </button>
