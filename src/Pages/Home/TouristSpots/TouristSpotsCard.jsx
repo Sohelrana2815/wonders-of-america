@@ -2,7 +2,7 @@ import { BiRightArrow } from "react-icons/bi";
 import { BsClock, BsGlobe } from "react-icons/bs";
 import { FaLocationArrow } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
+import PropTypes from "prop-types";
 const TouristSpotsCard = ({ touristSpot }) => {
   const {
     _id,
@@ -60,6 +60,18 @@ const TouristSpotsCard = ({ touristSpot }) => {
       </div>
     </>
   );
+};
+TouristSpotsCard.propTypes = {
+  touristSpot: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    tourist_spot_name: PropTypes.string.isRequired,
+    country_name: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    short_description: PropTypes.string.isRequired,
+    average_cost: PropTypes.string.isRequired,
+    travel_time: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default TouristSpotsCard;
