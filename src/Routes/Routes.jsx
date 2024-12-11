@@ -47,7 +47,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://wonders-of-america-backend.vercel.app/touristSpots/${params.id}`),
+          fetch(
+            `http://localhost:5000/touristSpots/${params.id}`
+          ),
       },
       {
         path: "addedSpotDetails/:id",
@@ -57,7 +59,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://wonders-of-america-backend.vercel.app/userAddedTouristSpots/${params.id}`),
+          fetch(
+            `http://localhost:5000/userAddedTouristSpots/${params.id}`
+          ),
       },
       {
         path: "myLists",

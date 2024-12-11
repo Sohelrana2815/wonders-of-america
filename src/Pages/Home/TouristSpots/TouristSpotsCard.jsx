@@ -12,9 +12,7 @@ const TouristSpotsCard = ({ touristSpot }) => {
     location,
     short_description,
     average_cost,
-    seasonality,
     travel_time,
-    totalVisitorsPerYear,
   } = touristSpot;
   return (
     <>
