@@ -6,6 +6,7 @@ import { FaTrashCan } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
+import AosAnimation from "../../Components/AosAnimation/AosAnimation";
 const MyListsTable = () => {
   const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
@@ -100,192 +101,197 @@ const MyListsTable = () => {
     <>
       <Toaster />
 
-      <div className="mt-32 max-w-screen-2xl mx-auto">
-        {/* Table */}
-        <div className="overflow-x-auto">
-          <table className="table">
-            {/* head */}
-            <thead>
-              <tr>
-                <th>No.</th>
-                <th>Spot Name</th>
-                <th>Location</th>
-                <th>Country Name</th>
-                <th>Update</th>
-                <th>Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              {myTouristSpots.map((myTouristSpot, index) => (
-                <tr key={myTouristSpot._id} className="hover">
-                  <th>{index + 1}</th>
-                  <td>{myTouristSpot.spotName}</td>
-                  <td>{myTouristSpot.location}</td>
-                  <td>{myTouristSpot.countryName}</td>
-                  <td>
-                    <button
-                      className="btn btn-sm bg-[#1563DF] text-white"
-                      onClick={() => openModal(myTouristSpot)}
-                    >
-                      <FaPen />
-                    </button>
-                  </td>
-                  <td>
-                    <button
-                      onClick={() => deleteTouristSpot(myTouristSpot._id)}
-                      className="btn btn-sm bg-red-600 text-white"
-                    >
-                      <FaTrashCan />
-                    </button>
-                  </td>
+      <AosAnimation animation="fade-up">
+        <div className="mt-32 max-w-screen-2xl mx-auto">
+          {/* Table */}
+          <div className="overflow-x-auto">
+            <table className="table">
+              {/* head */}
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Spot Name</th>
+                  <th>Location</th>
+                  <th>Country Name</th>
+                  <th>Update</th>
+                  <th>Delete</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {myTouristSpots.map((myTouristSpot, index) => (
+                  <tr key={myTouristSpot._id} className="hover">
+                    <th>{index + 1}</th>
+                    <td>{myTouristSpot.spotName}</td>
+                    <td>{myTouristSpot.location}</td>
+                    <td>{myTouristSpot.countryName}</td>
+                    <td>
+                      <button
+                        className="btn btn-sm bg-[#1563DF] text-white"
+                        onClick={() => openModal(myTouristSpot)}
+                      >
+                        <FaPen />
+                      </button>
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => deleteTouristSpot(myTouristSpot._id)}
+                        className="btn btn-sm bg-red-600 text-white"
+                      >
+                        <FaTrashCan />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
 
-        {/* Modal */}
-        <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-          <div className="modal-box">
-            <h3 className="font-bold text-lg">Update Tourist Spot</h3>
-            {selectedSpot && (
-              <div>
-                <form onSubmit={handleSubmit(onSubmit)}>
-                  {/* Main container div */}
-                  <div className="grid md:grid-cols-2 gap-x-3">
-                    {/* IMAGE */}
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">Photo URL</span>
-                      </label>
-                      <input
-                        type="text"
-                        {...register("image")}
-                        defaultValue={selectedSpot.image}
-                        className="input input-bordered"
-                      />
+          {/* Modal */}
+          <dialog
+            id="my_modal_5"
+            className="modal modal-bottom sm:modal-middle"
+          >
+            <div className="modal-box">
+              <h3 className="font-bold text-lg">Update Tourist Spot</h3>
+              {selectedSpot && (
+                <div>
+                  <form onSubmit={handleSubmit(onSubmit)}>
+                    {/* Main container div */}
+                    <div className="grid md:grid-cols-2 gap-x-3">
+                      {/* IMAGE */}
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text">Photo URL</span>
+                        </label>
+                        <input
+                          type="text"
+                          {...register("image")}
+                          defaultValue={selectedSpot.image}
+                          className="input input-bordered"
+                        />
+                      </div>
+                      {/* SpotName */}
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text">Spot Name</span>
+                        </label>
+                        <input
+                          type="text"
+                          {...register("spotName")}
+                          defaultValue={selectedSpot.spotName}
+                          className="input input-bordered"
+                        />
+                      </div>
+                      {/* Country Name */}
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text">Country Name</span>
+                        </label>
+                        <input
+                          type="text"
+                          {...register("countryName")}
+                          defaultValue={selectedSpot.countryName}
+                          className="input input-bordered"
+                        />
+                      </div>
+                      {/* Location*/}
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text">Location</span>
+                        </label>
+                        <input
+                          type="text"
+                          {...register("location")}
+                          defaultValue={selectedSpot.location}
+                          className="input input-bordered"
+                        />
+                      </div>
+                      {/* Description*/}
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text">Short Description</span>
+                        </label>
+                        <input
+                          type="text"
+                          {...register("description")}
+                          defaultValue={selectedSpot.description}
+                          className="input input-bordered"
+                        />
+                      </div>
+                      {/* Average cost*/}
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text">Average cost</span>
+                        </label>
+                        <input
+                          type="number"
+                          {...register("averageCost")}
+                          defaultValue={selectedSpot.averageCost}
+                          className="input input-bordered"
+                        />
+                      </div>
+                      {/* Seasonality*/}
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text">Seasonality</span>
+                        </label>
+                        <input
+                          type="text"
+                          {...register("seasonality")}
+                          defaultValue={selectedSpot.seasonality}
+                          className="input input-bordered"
+                        />
+                      </div>
+                      {/* Travel time*/}
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text">Travel Time</span>
+                        </label>
+                        <input
+                          type="text"
+                          {...register("travelTime")}
+                          defaultValue={selectedSpot.travelTime}
+                          className="input input-bordered"
+                        />
+                      </div>
                     </div>
-                    {/* SpotName */}
+                    {/* Total Visitors PerYear*/}
                     <div className="form-control">
                       <label className="label">
-                        <span className="label-text">Spot Name</span>
-                      </label>
-                      <input
-                        type="text"
-                        {...register("spotName")}
-                        defaultValue={selectedSpot.spotName}
-                        className="input input-bordered"
-                      />
-                    </div>
-                    {/* Country Name */}
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">Country Name</span>
-                      </label>
-                      <input
-                        type="text"
-                        {...register("countryName")}
-                        defaultValue={selectedSpot.countryName}
-                        className="input input-bordered"
-                      />
-                    </div>
-                    {/* Location*/}
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">Location</span>
-                      </label>
-                      <input
-                        type="text"
-                        {...register("location")}
-                        defaultValue={selectedSpot.location}
-                        className="input input-bordered"
-                      />
-                    </div>
-                    {/* Description*/}
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">Short Description</span>
-                      </label>
-                      <input
-                        type="text"
-                        {...register("description")}
-                        defaultValue={selectedSpot.description}
-                        className="input input-bordered"
-                      />
-                    </div>
-                    {/* Average cost*/}
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">Average cost</span>
+                        <span className="label-text">
+                          Total Visitors Per Year
+                        </span>
                       </label>
                       <input
                         type="number"
-                        {...register("averageCost")}
-                        defaultValue={selectedSpot.averageCost}
+                        {...register("totalVisitorsPerYear")}
+                        defaultValue={selectedSpot.totalVisitorsPerYear}
                         className="input input-bordered"
                       />
                     </div>
-                    {/* Seasonality*/}
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">Seasonality</span>
-                      </label>
-                      <input
-                        type="text"
-                        {...register("seasonality")}
-                        defaultValue={selectedSpot.seasonality}
-                        className="input input-bordered"
-                      />
+                    <div>
+                      <button
+                        type="submit"
+                        className="btn mt-5 bg-[#0791BE] text-white uppercase rounded-none"
+                      >
+                        Update This Tourist Spot
+                      </button>
                     </div>
-                    {/* Travel time*/}
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">Travel Time</span>
-                      </label>
-                      <input
-                        type="text"
-                        {...register("travelTime")}
-                        defaultValue={selectedSpot.travelTime}
-                        className="input input-bordered"
-                      />
-                    </div>
-                  </div>
-                  {/* Total Visitors PerYear*/}
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">
-                        Total Visitors Per Year
-                      </span>
-                    </label>
-                    <input
-                      type="number"
-                      {...register("totalVisitorsPerYear")}
-                      defaultValue={selectedSpot.totalVisitorsPerYear}
-                      className="input input-bordered"
-                    />
-                  </div>
-                  <div>
-                    <button
-                      type="submit"
-                      className="btn mt-5 bg-[#0791BE] text-white uppercase rounded-none"
-                    >
-                      Update This Tourist Spot
-                    </button>
-                  </div>
-                </form>
+                  </form>
+                </div>
+              )}
+              <div className="modal-action">
+                <button
+                  className="btn hover:bg-red-600 hover:text-white"
+                  onClick={closeModal}
+                >
+                  Close
+                </button>
               </div>
-            )}
-            <div className="modal-action">
-              <button
-                className="btn hover:bg-red-600 hover:text-white"
-                onClick={closeModal}
-              >
-                Close
-              </button>
             </div>
-          </div>
-        </dialog>
-      </div>
+          </dialog>
+        </div>
+      </AosAnimation>
     </>
   );
 };

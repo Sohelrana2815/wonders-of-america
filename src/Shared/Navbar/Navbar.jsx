@@ -3,6 +3,7 @@ import { MdMenu } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import AosAnimation from "../../Components/AosAnimation/AosAnimation";
 
 const Navbar = () => {
   const { user, loading, logout } = useAuth();
@@ -89,65 +90,70 @@ const Navbar = () => {
   );
   return (
     <>
-      <div className="navbar absolute z-10 top-0 left-1/2 transform -translate-x-1/2 e max-w-screen-xl md:pt-10 lg:fixed bgwhi">
-        <div className="navbar-start">
-          <div className="dropdown">
-            <div
-              tabIndex={0}
-              role="button"
-              className="md:text-3xl text-2xl text-warning  block lg:hidden mr-4"
-            >
-              <MdMenu />
-            </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-            >
-              {navLinks}
-            </ul>
-          </div>
-          <Link to="/">
-            <p className="md:text-2xl flex items-center md:gap-x-3 gap-x-1 text-xs text-warning">
-              <BiGlobe className="md:text-4xl text-xl" /> Wonders Of America
-            </p>
-          </Link>
-        </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{navLinks}</ul>
-        </div>
-        <div className="navbar-end gap-4">
-          {user ? (
-            <>
-              {/* avatar */}
-              <div className="avatar" title={user.displayName}>
-                <div className="ring-primary ring-offset-base-100 w-8 md:w-10 rounded-full ring ring-offset-2">
-                  <img src={user ? user.photoURL : ""} alt={user.displayName} />
-                </div>
-              </div>
-              {/* button */}
-              <button
-                onClick={handleLogout}
-                className="btn btn-outline rounded-none hover:bg-[#F56960] text-warning md:px-8 md:text-lg btn-xs md:btn-md text-sm"
+      <AosAnimation animation="fade">
+        <div className="navbar absolute z-10 top-0 left-1/2 transform -translate-x-1/2 e max-w-screen-xl md:pt-10 lg:fixed bgwhi">
+          <div className="navbar-start">
+            <div className="dropdown">
+              <div
+                tabIndex={0}
+                role="button"
+                className="md:text-3xl text-2xl text-warning  block lg:hidden mr-4"
               >
-                Logout
-              </button>
-            </>
-          ) : (
-            <>
-              <Link to="/signIn">
-                <button className="btn rounded-none bg-[#F56960] text-white border-none px-8">
-                  Login
+                <MdMenu />
+              </div>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              >
+                {navLinks}
+              </ul>
+            </div>
+            <Link to="/">
+              <p className="md:text-2xl flex items-center md:gap-x-3 gap-x-1 text-xs text-warning">
+                <BiGlobe className="md:text-4xl text-xl" /> Wonders Of America
+              </p>
+            </Link>
+          </div>
+          <div className="navbar-center hidden lg:flex">
+            <ul className="menu menu-horizontal px-1">{navLinks}</ul>
+          </div>
+          <div className="navbar-end gap-4">
+            {user ? (
+              <>
+                {/* avatar */}
+                <div className="avatar" title={user.displayName}>
+                  <div className="ring-primary ring-offset-base-100 w-8 md:w-10 rounded-full ring ring-offset-2">
+                    <img
+                      src={user ? user.photoURL : ""}
+                      alt={user.displayName}
+                    />
+                  </div>
+                </div>
+                {/* button */}
+                <button
+                  onClick={handleLogout}
+                  className="btn btn-outline rounded-none hover:bg-[#F56960] text-warning md:px-8 md:text-lg btn-xs md:btn-md text-sm"
+                >
+                  Logout
                 </button>
-              </Link>
-              <Link to="/signUp">
-                <button className="btn btn-outline rounded-none hover:bg-[#0791BE] text-white px-8">
-                  Sign up
-                </button>
-              </Link>
-            </>
-          )}
+              </>
+            ) : (
+              <>
+                <Link to="/signIn">
+                  <button className="btn rounded-none bg-[#F56960] text-white border-none px-8">
+                    Login
+                  </button>
+                </Link>
+                <Link to="/signUp">
+                  <button className="btn btn-outline rounded-none hover:bg-[#0791BE] text-white px-8">
+                    Sign up
+                  </button>
+                </Link>
+              </>
+            )}
+          </div>
         </div>
-      </div>
+      </AosAnimation>
     </>
   );
 };
