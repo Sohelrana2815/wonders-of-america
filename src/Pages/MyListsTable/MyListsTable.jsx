@@ -34,7 +34,7 @@ const MyListsTable = () => {
       averageCost: data.averageCost,
       seasonality: data.seasonality,
       travelTime: data.travelTime,
-      totalVisitorsPerYear: data.totalVisitorsPerYear,
+      totalVisitorsPerYear: parseInt(data.totalVisitorsPerYear),
     };
 
     try {
@@ -257,7 +257,7 @@ const MyListsTable = () => {
                       </span>
                     </label>
                     <input
-                      type="text"
+                      type="number"
                       {...register("totalVisitorsPerYear")}
                       defaultValue={selectedSpot.totalVisitorsPerYear}
                       className="input input-bordered"
